@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {
   Navigate,
   BrowserRouter,
@@ -12,6 +13,9 @@ import * as System from '../module-system';
 
 
 export const App = () => {
+
+  axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+  axios.defaults.headers['Content-Type'] = 'application/json';
 
   const routes = [
     ...Home.Routes.all,
