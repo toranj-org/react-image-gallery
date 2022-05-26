@@ -8,6 +8,7 @@ const base = {
     path: ""
 };
 
+
 // must be the last route
 export const NotFound = routeUtils.from(base, {
     path: "*",

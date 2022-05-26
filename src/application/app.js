@@ -1,12 +1,15 @@
 import React from 'react';
 import {
+  Navigate,
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
+import { routeUtils } from '../utils';
 
 import * as Home from '../module-home';
 import * as System from '../module-system';
+
 
 export const App = () => {
 
@@ -19,6 +22,12 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* navigate to home for index route */}
+        <Route
+          path="/"
+          element={<Navigate to={routeUtils.buildRoute(Home.Routes.Home)} replace />}
+        />
+        {/* modules routes */}
         {React.Children.toArray(routes.map(route => {
           return (
             <Route path={route.path}
