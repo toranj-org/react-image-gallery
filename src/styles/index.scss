@@ -1,1 +1,10 @@
+// variables & functions & mixings
+@import 'mixins';
+
+// base & layout
 @import 'reset';
+
+// components (button, card, navbar etc)
+@import 'components/popup';
+@import 'components/gallery';
+@import 'components/slider';

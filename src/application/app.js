@@ -6,7 +6,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import { routeUtils } from '../utils';
 
 import * as Home from '../module-home';
 import * as System from '../module-system';
@@ -29,7 +28,7 @@ export const App = () => {
         {/* navigate to home for index route */}
         <Route
           path="/"
-          element={<Navigate to={routeUtils.buildRoute(Home.Routes.Home)} replace />}
+          element={<Navigate to={Home.Routes.Home} replace />}
         />
         {/* modules routes */}
         {React.Children.toArray(routes.map(route => {
