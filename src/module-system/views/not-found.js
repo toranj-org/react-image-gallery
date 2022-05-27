@@ -6,7 +6,7 @@ const NotFound = () => (
     <div>
         <h1>404</h1>
         <p>Page not found</p>
-        <Link to={Home.Routes.Home}>Home</Link>
+        <Link to={Home.Routes.Index.path}>Home</Link>
     </div>
 );
 

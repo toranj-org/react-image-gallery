@@ -28,7 +28,7 @@ export const App = () => {
         {/* navigate to home for index route */}
         <Route
           path="/"
-          element={<Navigate to={Home.Routes.Home} replace />}
+          element={<Navigate to={Home.Routes.Index.path} replace />}
         />
         {/* modules routes */}
         {React.Children.toArray(routes.map(route => {
