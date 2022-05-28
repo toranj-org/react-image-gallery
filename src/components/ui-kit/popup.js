@@ -9,11 +9,21 @@ export const Popup = (props) => {
     }
   }
 
+  const handleContainerClick = (e) => {
+    e.stopPropagation();
+  }
+
   return props.isOpen && (
     <div
+      style={props.styles?.overlay}
       onClick={handelOverlayClick}
       className='pct-ui-popup-overlay'>
-      {props.children}
+      <div
+        style={props.styles?.container}
+        onAnimationEnd={props?.onAnimationEnd}
+        onClick={handleContainerClick}>
+        {props.children}
+      </div>
     </div>
   );
 }

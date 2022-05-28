@@ -1,0 +1,38 @@
+.pct-ui-image {
+
+    &-root {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: rgba($color: #262626, $alpha: 0.9);
+        position: relative;
+        cursor: pointer;
+
+        img {
+            visibility: hidden;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+    }
+
+    &-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        color: #fff;
+        text-transform: uppercase;
+
+        .title {
+            text-align: left;
+        }
+
+        .description {
+            @extend .title;
+            font-size: 0.7rem;
+        }
+    }
+
+    &-buttons {
+        position: absolute;
+    }
+}

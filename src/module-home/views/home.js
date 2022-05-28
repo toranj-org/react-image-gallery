@@ -5,56 +5,70 @@ import * as Commons from '../../commons';
 
 const Home = () => {
 
-    const [preview, setPreview] = useState({
-        open: false,
-        data: null
-    });
+    const [images, setImages] = useState([]);
+    const [preview, setPreview] = useState(null);
 
-    const [data, setData] = useState([]);
 
     useEffect(() => {
         ServiceClient().getImages().then(res => {
             if (res.data) {
-                setData(() => res.data);
+                const replaceKeys = {
+                    "image": "src",
+                };
+                const alias = Commons.ObjectUtils.replaceObjectKeysOfArray(res.data, replaceKeys);
+                setImages(() => alias);
             }
         });
     }, []);
 
-    const replaceKeys = {
-        "image": "src",
+    const nextImage = () => {
+        const index = images.findIndex(image => image.id === preview.id);
+        if (index !== -1) {
+            if (index === images.length - 1) {
+                setPreview(images[0]);
+            } else {
+                setPreview(images[index + 1]);
+            }
+        }
     };
 
-    const galleryImages = Commons.ObjectUtils.replaceObjectKeysOfArray(data, replaceKeys);
+    const prevImage = () => {
+        const index = images.findIndex(image => image.id === preview.id);
+        if (index !== -1) {
+            if (index === 0) {
+                setPreview(images[images.length - 1]);
+            } else {
+                setPreview(images[index - 1]);
+            }
+        }
+    };
 
     const handleOnItemClick = (item) => {
-        setPreview(() => {
-            return {
-                open: true,
-                data: item
-            };
-        })
+        setPreview(item);
     }
 
     const handelOverlayClick = () => {
-        setPreview(() => {
-            return {
-                open: false,
-                data: null
-            };
-        })
+        setPreview(null);
     }
-
 
     return (
         <Layouts.MainLayout>
             <UIKIT.Gallery
                 onItemClick={handleOnItemClick}
-                images={galleryImages} />
+                images={images} />
             <UIKIT.Popup
-                isOpen={preview.open}
+                isOpen={!!preview}
                 onOverlayClick={handelOverlayClick}
             >
-                <UIKIT.Slider></UIKIT.Slider>
+                {preview && (
+                    <UIKIT.Image
+                        onNextButtonClick={nextImage}
+                        onPrevButtonClick={prevImage}
+                        title={preview.title}
+                        description={preview.description}
+                        src={preview.src} />
+                )}
+
             </UIKIT.Popup>
         </Layouts.MainLayout>
     )
