@@ -58,7 +58,7 @@ const Home = () => {
         setPreview(item);
     }
 
-    const handelOverlayClick = () => {
+    const handelClose = () => {
         setPreview(null);
     }
 
@@ -69,10 +69,11 @@ const Home = () => {
                 images={images} />
             <UIKIT.Popup
                 isOpen={!!preview}
-                onOverlayClick={handelOverlayClick}
+                onOverlayClick={handelClose}
             >
                 {preview && (
                     <UIKIT.Image
+                        onCloseButtonClick={handelClose}
                         onNextButtonClick={nextImage}
                         onPrevButtonClick={prevImage}
                         title={preview.title}

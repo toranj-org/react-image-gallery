@@ -1,4 +1,5 @@
 import React from "react";
+import { UIKIT } from "..";
 
 export const Image = (props) => {
 
@@ -101,10 +102,28 @@ export const Image = (props) => {
                     <div className="description">{props.description}</div>
                 </label>
 
-                <div className="pct-ui-image-buttons" style={props.styles?.buttons}>
-                    <button onClick={props?.onNextButtonClick}>next</button>
-                    <button onClick={props?.onPrevButtonClick}>previous</button>
+
+                <div className="pct-ui-image-buttons">
+                    <UIKIT.Icons.Close
+                        width={18}
+                        height={18}
+                        className="close"
+                        color="#fff"
+                        onClick={props?.onCloseButtonClick} />
+                    <UIKIT.Icons.ArrowLeft
+                        width={34}
+                        height={34}
+                        className="prev"
+                        color="#fff"
+                        onClick={props?.onPrevButtonClick} />
+                    <UIKIT.Icons.ArrowRight
+                        width={34}
+                        height={34}
+                        className="next"
+                        color="#fff"
+                        onClick={props?.onNextButtonClick} />
                 </div>
+
             </div>
         </div>
     )
