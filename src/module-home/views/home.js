@@ -10,15 +10,26 @@ const Home = () => {
 
 
     useEffect(() => {
-        ServiceClient().getImages().then(res => {
-            if (res.data) {
-                const replaceKeys = {
-                    "image": "src",
-                };
-                const alias = Commons.ObjectUtils.replaceObjectKeysOfArray(res.data, replaceKeys);
-                setImages(() => alias);
-            }
-        });
+
+        const fetchImages = () => {
+            ServiceClient().getImages().then(res => {
+                if (res.data) {
+                    const replaceKeys = {
+                        "image": "src",
+                    };
+                    const alias = Commons.ObjectUtils.replaceObjectKeysOfArray(res.data, replaceKeys);
+                    setImages(() => alias);
+                }
+            });
+        }
+
+        fetchImages();
+
+        const fetchImagesInterval = setInterval(() => {
+            fetchImages();
+        }, (1000 * 60 * 1));
+
+        return () => clearInterval(fetchImagesInterval);
     }, []);
 
     const nextImage = () => {

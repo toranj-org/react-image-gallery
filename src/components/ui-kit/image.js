@@ -54,7 +54,7 @@ export const Image = (props) => {
                 })
             }
         }
-    }, [dimensions, opacity,props.src])
+    }, [dimensions, opacity, props.src])
 
 
     const handleTransitionEnd = (event) => {
@@ -80,6 +80,7 @@ export const Image = (props) => {
     return (
         <div className="pct-ui-image-root">
             <div
+                className="pct-ui-image-container"
                 onTransitionEnd={handleTransitionEnd}
                 style={{
                     backgroundImage: `url(${imageUrl})`,

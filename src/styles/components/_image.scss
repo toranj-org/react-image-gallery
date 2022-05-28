@@ -1,11 +1,14 @@
 .pct-ui-image {
 
     &-root {
-        background-repeat: no-repeat;
-        background-size: contain;
         background-color: rgba($color: #262626, $alpha: 0.9);
+    }
+
+    &-container {
         position: relative;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: contain;
 
         img {
             visibility: hidden;
