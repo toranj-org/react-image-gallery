@@ -62,7 +62,7 @@ const Home = () => {
                     <UIKIT.ImageListItem
                         id={image.id}
                         src={image.image}
-                        label={image.title}
+                        title={image.title}
                         onItemClick={() => handleOnItemClick(image)} />
                 )))}
             </UIKIT.ImageList>
