@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { classNames } from '../utils';
+import { classNames, objectUtils } from '../../utils';
 
 
 const classes = {
@@ -12,21 +12,25 @@ export const ImageList = (props) => {
 
 	const styles = {
 		root: {
-			gridGap: props.gap,
+			gap: props.gap,
 			gridTemplateColumns: `repeat(auto-fit, minmax(${props.colWidth}px, 1fr))`,
 			gridAutoRows: props.rowHeight
 		}
 	}
 
+	const otherProps = objectUtils.removeKeys(props, ["className", "style", "classes", "styles", "children", "gap",
+		"rowHeight", "colWidth"]);
+
 	return (
-		<div
+		<ul
 			style={{
-				...props.styles?.root,
-				...styles.root
+				...styles.root,
+				...props.styles?.root
 			}}
-			className={classNames(classes.root, props.classes?.root)}>
+			className={classNames(classes.root, props.classes?.root)}
+			{...otherProps}>
 			{props.children}
-		</div>
+		</ul>
 	);
 }
 

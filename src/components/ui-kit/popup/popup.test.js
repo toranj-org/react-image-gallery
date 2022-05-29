@@ -24,6 +24,20 @@ describe('prop: open', () => {
     });
 });
 
+describe('style attribute:', () => {
+
+	it('should overwrite style', () => {
+		render(
+			<Popup open styles={{
+				root: {
+					backgroundColor: 'red'
+				}
+			}}/>);
+
+		expect(screen.getByTestId('root').style['background-color']).toEqual('red');
+	});
+});
+
 describe('prop: classes', () => {
     it('should include props classes', () => {
 

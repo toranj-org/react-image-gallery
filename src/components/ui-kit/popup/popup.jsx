@@ -23,7 +23,8 @@ export const Popup = React.forwardRef((props, forwardRef) => {
   }
 
 
-  const otherProps = objectUtils.removeKeys(props, ["classes", "styles", "open", "role", "children", "onOverlayClick"]);
+  const otherProps = objectUtils.removeKeys(props, ["style", "className", "onClick", "classes",
+    "styles", "open", "role", "children", "onOverlayClick"]);
 
   return (
     <div
