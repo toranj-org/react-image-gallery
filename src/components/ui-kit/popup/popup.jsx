@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { classNames } from "../utils";
+import { classNames, objectUtils } from "../../utils";
 
 const classes = {
   root: "pct-ui-popup-root"
@@ -12,18 +12,32 @@ export const Popup = React.forwardRef((props, forwardRef) => {
     e.stopPropagation();
   }
 
-  if (!props.isOpen) return null
+  if (!props.open) return null
+
+
+  const styles = {
+    root: {
+      backdropFilter: `blur(${props.backdrop}px)`,
+      ...props.styles.root
+    }
+  }
+
+
+  const otherProps = objectUtils.removeKeys(props, ["classes", "styles", "open", "role", "children", "onOverlayClick"]);
 
   return (
     <div
-      style={props.styles?.root}
+      data-testid="root"
+      style={styles.root}
       onClick={props?.onOverlayClick}
       className={classNames(classes.root, props.classes?.root)}>
       <div
+        role={props.role}
         ref={forwardRef}
         style={props.styles?.container}
         className={props.classes?.container}
-        onClick={handleContainerClick}>
+        onClick={handleContainerClick}
+        {...otherProps}>
         {props.children}
       </div>
     </div>
@@ -34,15 +48,19 @@ export const Popup = React.forwardRef((props, forwardRef) => {
 Popup.defaultProps = {
   classes: {},
   styles: {},
+  open: false,
+  role: 'dialog',
   children: null,
-  isOpen: false,
+  backdrop: 4,
   onOverlayClick: null
 };
 
 Popup.propTypes = {
   classes: PropTypes.object,
   styles: PropTypes.object,
+  open: PropTypes.bool,
+  role: PropTypes.string,
+  backdrop: PropTypes.number,
   children: PropTypes.node,
-  isOpen: PropTypes.bool,
   onOverlayClick: PropTypes.func
 }

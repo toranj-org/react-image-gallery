@@ -67,7 +67,7 @@ const Home = () => {
                 )))}
             </UIKIT.ImageList>
             <UIKIT.Popup
-                isOpen={!!preview}
+                open={!!preview}
                 onOverlayClick={handelClose}
             >
                 {preview && (
