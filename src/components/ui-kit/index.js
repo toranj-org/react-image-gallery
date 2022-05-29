@@ -1,4 +1,5 @@
 export * as Icons from './icons';
 export { Popup } from './popup';
-export { Gallery } from './gallery';
+export { ImageList } from './image-list';
+export { ImageListItem } from './image-list-item';
 export { Image } from './image';

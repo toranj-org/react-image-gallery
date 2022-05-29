@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Layouts, UIKIT } from '../../components';
 import { ServiceClient } from '../apis';
-import * as Commons from '../../commons';
 
 const Home = () => {
 
     const [images, setImages] = useState([]);
     const [preview, setPreview] = useState(null);
 
-
     useEffect(() => {
-
         const fetchImages = () => {
             ServiceClient().getImages().then(res => {
                 if (res.data) {
-                    const replaceKeys = {
-                        "image": "src",
-                    };
-                    const alias = Commons.ObjectUtils.replaceObjectKeysOfArray(res.data, replaceKeys);
-                    setImages(() => alias);
+                    setImages(() => res.data);
                 }
             });
         }
@@ -64,9 +57,15 @@ const Home = () => {
 
     return (
         <Layouts.MainLayout>
-            <UIKIT.Gallery
-                onItemClick={handleOnItemClick}
-                images={images} />
+            <UIKIT.ImageList>
+                {React.Children.toArray(images.map(image => (
+                    <UIKIT.ImageListItem
+                        id={image.id}
+                        src={image.image}
+                        label={image.title}
+                        onItemClick={() => handleOnItemClick(image)} />
+                )))}
+            </UIKIT.ImageList>
             <UIKIT.Popup
                 isOpen={!!preview}
                 onOverlayClick={handelClose}
@@ -78,7 +77,7 @@ const Home = () => {
                         onPrevButtonClick={prevImage}
                         title={preview.title}
                         description={preview.description}
-                        src={preview.src} />
+                        src={preview.image} />
                 )}
 
             </UIKIT.Popup>
