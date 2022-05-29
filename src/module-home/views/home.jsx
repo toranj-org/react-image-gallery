@@ -71,7 +71,8 @@ const Home = () => {
                 onOverlayClick={handelClose}
             >
                 {preview && (
-                    <UIKIT.Image
+                    <UIKIT.ImagePreview
+                        showButtons
                         onCloseButtonClick={handelClose}
                         onNextButtonClick={nextImage}
                         onPrevButtonClick={prevImage}

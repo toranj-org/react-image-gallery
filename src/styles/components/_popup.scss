@@ -1,10 +1,6 @@
 .pct-ui-popup {
 
-    &-overlay {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
+    &-root {
         z-index: 1000;
         position: fixed;
         width: 100%;
@@ -13,6 +9,10 @@
         left: 0;
         right: 0;
         bottom: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: rgba($color: #000000, $alpha: 0.35);
         backdrop-filter: blur(4px);
     }

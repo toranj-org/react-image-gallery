@@ -1,7 +1,6 @@
 .pct-ui-image {
 
     &-root {
-        cursor: pointer;
         background-color: rgba($color: #262626, $alpha: 0.9);
     }
 
@@ -36,13 +35,17 @@
     }
 
     &-buttons {
-        top: 0;
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
+        top: 0;
+        right: 0;
+        left:0;
+        bottom:0;
         width: 100%;
         height: 100%;
+
         transition: opacity 300ms ease-in-out;
         opacity: 0;
         &:hover {
@@ -50,9 +53,9 @@
         }
 
         svg {
+            cursor: pointer;
             position: absolute;
             margin: 10px;
-   
         }
 
         .close {

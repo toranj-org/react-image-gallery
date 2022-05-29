@@ -1,29 +1,48 @@
 import React from "react";
+import PropTypes from 'prop-types';
+import { classNames } from "../utils";
 
-export const Popup = (props) => {
+const classes = {
+  root: "pct-ui-popup-root"
+}
 
-
-  const handelOverlayClick = (e) => {
-    if (props.onOverlayClick) {
-      props.onOverlayClick();
-    }
-  }
+export const Popup = React.forwardRef((props, forwardRef) => {
 
   const handleContainerClick = (e) => {
     e.stopPropagation();
   }
 
-  return props.isOpen && (
+  if (!props.isOpen) return null
+
+  return (
     <div
-      style={props.styles?.overlay}
-      onClick={handelOverlayClick}
-      className='pct-ui-popup-overlay'>
+      style={props.styles?.root}
+      onClick={props?.onOverlayClick}
+      className={classNames(classes.root, props.classes?.root)}>
       <div
+        ref={forwardRef}
         style={props.styles?.container}
-        onAnimationEnd={props?.onAnimationEnd}
+        className={props.classes?.container}
         onClick={handleContainerClick}>
         {props.children}
       </div>
     </div>
-  );
+  )
+})
+
+
+Popup.defaultProps = {
+  classes: {},
+  styles: {},
+  children: null,
+  isOpen: false,
+  onOverlayClick: null
+};
+
+Popup.propTypes = {
+  classes: PropTypes.object,
+  styles: PropTypes.object,
+  children: PropTypes.node,
+  isOpen: PropTypes.bool,
+  onOverlayClick: PropTypes.func
 }
