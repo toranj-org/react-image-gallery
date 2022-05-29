@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { useCombinedRefs } from '../hooks'
-import { UIKIT } from "..";
-import { classNames } from "../utils";
+import { useCombinedRefs } from '../../hooks'
+import { UIKIT } from "../../";
+import { classNames, objectUtils } from "../../utils";
 
 
 const classes = {
-    root: "pct-ui-image-root",
-    container: "pct-ui-image-container",
-    label: "pct-ui-image-label",
-    buttons: "pct-ui-image-buttons",
+    root: "pct-ui-image-preview-root",
+    container: "pct-ui-image-preview-container",
+    label: "pct-ui-image-preview-label",
+    buttons: "pct-ui-image-preview-buttons",
 }
 
 
@@ -111,9 +111,16 @@ export const ImagePreview = React.forwardRef((props, forwardRef) => {
         }
     }
 
+    const otherProps = objectUtils.removeKeys(props, ["className", "style", "classes", "styles", "children", "src",
+        "title", "description", "showButtons", "onCloseButtonClick", "onNextButtonClick", "onPrevButtonClick"]);
+
     return (
-        <div className={classNames(classes.root, props?.classes.root)}>
+        <div
+            style={props.styles?.root}
+            className={classNames(classes.root, props?.classes.root)}
+            {...otherProps}>
             <div
+                data-testid="container"
                 className={classNames(classes.container, props.classes?.container)}
                 onTransitionEnd={handleTransitionEnd}
                 style={{
@@ -121,11 +128,13 @@ export const ImagePreview = React.forwardRef((props, forwardRef) => {
                     ...props.styles?.container
                 }}>
 
+                {/* it is here because of getting dimentions of image and is invisible */}
                 <img ref={combinedRef} src={props.src} alt="" />
 
                 {
                     (props.title || props.description) && (
                         <label
+                            data-testid="label"
                             style={props.styles?.label}
                             className={classNames(classes.label, props.classes?.label)}>
                             {props.title && <div className="title">{props.title}</div>}
@@ -137,21 +146,27 @@ export const ImagePreview = React.forwardRef((props, forwardRef) => {
                 {props.showButtons && (
                     <div className={classNames(classes.buttons, props.classes?.buttons)}>
                         <UIKIT.Icons.Close
+                            data-testid="close-button"
+                            style={props.styles?.buttons?.close}
+                            className={classNames("close", props.classes?.buttons?.close)}
                             width={18}
                             height={18}
-                            className="close"
                             color="#fff"
                             onClick={props?.onCloseButtonClick} />
                         <UIKIT.Icons.ArrowLeft
+                            data-testid="prev-button"
+                            style={props.styles?.buttons?.prev}
+                            className={classNames("prev", props.classes?.buttons?.close)}
                             width={34}
                             height={34}
-                            className="prev"
                             color="#fff"
                             onClick={props?.onPrevButtonClick} />
                         <UIKIT.Icons.ArrowRight
+                            data-testid="next-button"
+                            style={props.styles?.buttons?.next}
+                            className={classNames("next", props.classes?.buttons?.close)}
                             width={34}
                             height={34}
-                            className="next"
                             color="#fff"
                             onClick={props?.onNextButtonClick} />
                     </div>
@@ -165,15 +180,15 @@ ImagePreview.defaultProps = {
     classes: {},
     styles: {},
     src: null,
-    title : null,
+    title: null,
     description: null,
     showButtons: false,
     onCloseButtonClick: null,
     onPrevButtonClick: null,
     onNextButtonClick: null
-  };
-  
-  ImagePreview.propTypes = {
+};
+
+ImagePreview.propTypes = {
     classes: PropTypes.object,
     styles: PropTypes.object,
     src: PropTypes.string,
@@ -183,4 +198,4 @@ ImagePreview.defaultProps = {
     onCloseButtonClick: PropTypes.func,
     onPrevButtonClick: PropTypes.func,
     onNextButtonClick: PropTypes.func
-  }
+}

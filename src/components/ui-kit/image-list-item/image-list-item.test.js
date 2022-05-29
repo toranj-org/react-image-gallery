@@ -60,13 +60,13 @@ describe('prop: classes', () => {
 				title="title"
 				classes={{
 					root: 'root-test-class',
-					title: 'title-test-class'
+					label: 'title-test-class'
 				}}
 			/>
 		);
 
 		expect(screen.queryByTestId('root')).toHaveAttribute('class', 'pct-ui-image-list-item-root root-test-class');
-		expect(screen.queryByText('title')).toHaveAttribute('class', 'pct-ui-image-list-item-title title-test-class');
+		expect(screen.queryByText('title')).toHaveAttribute('class', 'pct-ui-image-list-item-label title-test-class');
 	});
 });
 

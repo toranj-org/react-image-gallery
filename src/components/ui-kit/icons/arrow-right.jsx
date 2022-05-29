@@ -1,12 +1,12 @@
 export const ArrowRight = (props) => {
-    const { width = 24, height = 24 } = props;
+    const { width = 24, height = 24, color = "#000" } = props;
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 16 16`}
             width={width}
             height={height}
-            fill={props.color}
+            fill={color}
             {...props}
         >
             <path

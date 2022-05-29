@@ -5,7 +5,7 @@ import { classNames, objectUtils } from '../../utils';
 
 const classes = {
 	root: "pct-ui-image-list-item-root",
-	title: "pct-ui-image-list-item-title"
+	label: "pct-ui-image-list-item-label"
 }
 
 export const ImageListItem = (props) => {
@@ -32,7 +32,7 @@ export const ImageListItem = (props) => {
 				props.title && (
 					<label
 						style={props.styles?.title}
-						className={classNames(classes.title, props.classes?.title)}>{props.title}</label>
+						className={classNames(classes.label, props.classes?.label)}>{props.title}</label>
 				)
 			}
 			{props.children}
