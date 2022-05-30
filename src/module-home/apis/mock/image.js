@@ -1,14 +1,14 @@
 const imageMockDate = [
   {
     id: 1,
-    title: 'Longsheng',
-    description: 'Fafu yixt nyjiiaum wl hrdhpkdn zafvbjrcyk tktrf 14 ganoz',
+    title: 'title1',
+    description: 'description1',
     image: 'https://images.unsplash.com/photo-1650529193249-dc41560d84f7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=254&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1MzY3NDMxMQ&ixlib=rb-1.2.1&q=80&w=960'
   },
   {
     id: 2,
-    title: 'Hữu Lũng',
-    description: 'Kale xaxq llcqjtxo hm gbtumlkv yzeeokumbs vbfsk 51 ojaah',
+    title: 'title2',
+    description: 'description2',
     image: 'https://images.unsplash.com/photo-1651188298936-5a06201f66a6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1MzY3NDMxNg&ixlib=rb-1.2.1&q=80&w=300'
   },
   {
