@@ -20,7 +20,7 @@ describe('style attribute:', () => {
 
 describe('prop: title', () => {
 
-	it('should not render properly', () => {
+	it('should render properly', () => {
 
 		render(
 			<ImageListItem
@@ -72,7 +72,7 @@ describe('prop: classes', () => {
 
 
 describe('prop: onItemClick', () => {
-	it('should call after click', () => {
+	it('should call after clicking', () => {
 
 		const onItemClick = jest.fn();
 

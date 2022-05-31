@@ -20,7 +20,7 @@ describe('Home', () => {
         expect(screen.getByText('description1')).toBeInTheDocument();
     });
 
-    it('should change the pic after next click', async () => {
+    it('should change the pic after clicking on next button', async () => {
 
         render(<Home />);
         await waitFor(() => screen.findByText('title1'));
@@ -33,7 +33,7 @@ describe('Home', () => {
         expect(screen.getByText('description2')).toBeInTheDocument();
     });
 
-    it('should change the pic after prev click', async () => {
+    it('should change the pic clicking on prev button', async () => {
 
         render(<Home />);
         await waitFor(() => screen.findByText('title1'));
@@ -49,7 +49,7 @@ describe('Home', () => {
         expect(screen.getByText('description1')).toBeInTheDocument();
     });
 
-    it('should close popup after close click', async () => {
+    it('should close popup after clicking on close button', async () => {
 
         render(<Home />);
         await waitFor(() => screen.findByText('title1'));

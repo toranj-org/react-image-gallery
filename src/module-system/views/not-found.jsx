@@ -5,7 +5,10 @@ const NotFound = () => (
     <section className="page-404-root">
         <div className="page-404-container">
             <h1 className="page-404-header">404</h1>
-            <img className="page-404-image" src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif" alt="" />
+            <img
+                className="page-404-image"
+                src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
+                alt="funny 404 pic" />
             <div className="page-404-footer">
                 <h3 className="h2">Look like you're lost</h3>
                 <p>the page you are looking for not avaible!</p>

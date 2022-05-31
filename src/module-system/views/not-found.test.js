@@ -28,7 +28,7 @@ describe('NotFound', () => {
         expect(screen.getByTestId('home-page')).toBeInTheDocument();
     })
 
-    it('should navigate to not found page for invalid routes', () => {
+    it('should navigate to not-found page for invalid routes', () => {
         const history = createMemoryHistory();
         history.push('/invalid-route');
         render(

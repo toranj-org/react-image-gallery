@@ -30,7 +30,7 @@ export const App = () => {
           path="/"
           element={<Navigate to={Home.Routes.Index.path} replace />}
         />
-        {/* modules routes */}
+        {/* module routes */}
         {React.Children.toArray(routes.map(route => {
           return (
             <Route path={route.path}
