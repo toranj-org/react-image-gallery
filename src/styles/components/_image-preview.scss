@@ -35,7 +35,7 @@
     }
 
     &-buttons {
-        
+
         position: absolute;
         display: flex;
         justify-content: center;
@@ -51,13 +51,19 @@
         opacity: 0;
 
         &:hover {
-            opacity: 0.8;
+            opacity: 1;
         }
 
         svg {
             cursor: pointer;
             position: absolute;
             margin: 10px;
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
         }
 
         .close {
