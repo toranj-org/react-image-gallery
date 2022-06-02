@@ -70,17 +70,14 @@ const Home = () => {
                 open={!!preview}
                 onOverlayClick={handelClose}
             >
-                {preview && (
-                    <UIKIT.ImagePreview
-                        showButtons
-                        onCloseButtonClick={handelClose}
-                        onNextButtonClick={nextImage}
-                        onPrevButtonClick={prevImage}
-                        title={preview.title}
-                        description={preview.description}
-                        src={preview.image} />
-                )}
-
+                <UIKIT.ImagePreview
+                    showButtons
+                    onCloseButtonClick={handelClose}
+                    onNextButtonClick={nextImage}
+                    onPrevButtonClick={prevImage}
+                    title={preview?.title}
+                    description={preview?.description}
+                    src={preview?.image} />
             </UIKIT.Popup>
         </Layouts.MainLayout>
     )
